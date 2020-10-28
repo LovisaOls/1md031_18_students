@@ -7,7 +7,7 @@
     </head>
     <body>
         <main>
-            <h1>Welcome to Bob's Burgers!!!</h1>
+            <h1>Welcome to Bob's Burgers!</h1>
                 <section id="menu"> 
                     <h2>Select burger</h2>
                         <p>This is where you select your burger</p>
@@ -66,21 +66,52 @@
                <section id="contact">
                     <h2>Customer information</h2>
                         <p>This is where you provide neccesary information</p>
-
-                        <form>
-                            <fieldset>
+                        <h3>Delivery information:</h3>
+                            <form>
                                 <p>
-                                    <label for="name">Name</label><br>
-                                    <input type="text" id="name" name="n" required="required" placeholder="Name">
+                                    <label for="name"> Full name</label><br>
+                                    <input type="text" id="name" name="n" required="required" placeholder="First- and last name">
                                 </p>
                                 <p>
-                                    <input type="email" id="email" name="em" required="required" placeholder="E-mail address">
+                                    <label for="email">E-mail</label><br>
+                                    <input type="email" id="email" name="em" required="required" placeholder="E-mail">
                                 </p>
-                            </fieldset>
-                        </form>
+                                <p>
+                                    <label for="street">Street</label><br>
+                                    <input type="text" id="street" name="str" required="required" placeholder="Street name">
+                                </p>
+                                <p>
+                                    <label for="house">House</label><br>
+                                    <input type=”number” id="house" name="hnr" required="required" placeholder="House number">
+                                </p>
+                                <p>
+                                    <label for="payment">Payment</label><br>
+                                    <select id="payment" name="pay">
+                                        <option>Credit Card</option>
+                                        <option selected>Debit Card</option>
+                                        <option>Swish</option>
+                                        <option>Cash</option>
+                                    </select>
+                                </p>
+                                <p>
+                                    <label>Gender</label><br/>
 
+                                    <input type="radio" name="gender" id="Female"/> 
+                                    <label for ="Female"> Female </label> <br/>
+
+                                    <input type="radio" name="gender" id="Male"/> 
+                                    <label for ="Male"> Male </label> <br/>
+
+                                    <input type="radio" name="gender" id="NonBinary"/> 
+                                    <label for ="NonBinary"> Non-Binary </label> <br/>
+
+                                    <input type="radio" name="gender" id="notProvided"  checked="checked"/> 
+                                    <label  for ="notProvided"> Do not wish to provide </label> <br/>
+                                </p>
+                            </form>
                </section>
-                
+               <button type="submit"><img width= "20px" src="https://cdn.iconscout.com/icon/premium/png-64-thumb/shopping-cart-411-1092382.png"> Place order!</button>
+
         </main>
         <footer>
             <hr>
