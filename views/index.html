@@ -1,112 +1,119 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title> Bob's Burgers</title>
-        <meta charset="utf-8"/>
-        <link rel="stylesheet" href="css/style.css">
-        <script src="js/js_script.js"></script> 
-        <script src="https://vuejs.org/js/vue.js"></script>
-        <script src="js/vue_script.js" defer></script> 
-    </head>
-    <body>
-        <header>
-            <img src="https://www.visitcalgary.com/sites/default/files/2019-08/Best_Burgers_Image_Header_2019.jpg">
-            <h1>Welcome to Bob's Burgers!</h1>
-        </header>
-        <main>
-            <div id="myID">
-                {{ arbitraryVariableName }}
-            </div>
-                <section id="menu"> 
-                    <h2>Select burger</h2>
-                        <p>This is where you select your burger</p>
-                        <div class="burger a">
-                            <h3>The Bob Burger</h3>
-                            <img src="https://www.burgerking.se/011_se/Product%20images/Burgers/image-thumb__18082__modMenuProductTile/BBQ%20CHEESE%20BACON_1500x1500px~-~1024w@2x.png" 
-                                        alt="span" title="The Bob Burger" width="150px"> 
-                            <ul>
-                                <li>Our most popular burger!</li>
-                                <li>1000 kCal</li>
-                                <li>Contains <span class="allergy">lactose</span></li>
-                                <li>Contains <span class="allergy">gluten</span></li>
-                            </ul>
-                        </div>
-                        <div class="burger b">
-                            <h3>Chicken burger</h3>
-                            <img src="https://www.burgerking.se/011_se/Product%20images/Burgers/image-thumb__14591__modMenuProductTile/Chicken%20King%201500x1500~-~1024w@2x.png" 
-                                        alt="span" title="Chicken burger" width="150px"> 
-                            <ul>
-                                <li>Our spicy chicken burger!</li>
-                                <li>800 kCal</li>
-                                <li>Contains <span class="allergy">gluten</span></li>
-                                <li>Contains <span class="allergy">nuts</span></li>
-                            </ul>
-                        </div>
-                        <div class="burger c">
-                            <h3>Halloumi burger</h3>
-                            <img src="https://www.burgerking.se/011_se/Product%20images/KAMPANJ/image-thumb__21855__modMenuProductTile/SMOKEY%20HALLOUMI%201500x1500~-~1024w@2x.png" 
-                                        alt="span" title="Halloumi burger" width="150px">
-                            <ul>
-                                <li>Vegetarian option!</li>
-                                <li>850 kCal</li>
-                                <li>Contains <span class="allergy">lactose</span></li>
-                                <li>Contains <span class="allergy">gluten</span></li>
-                            </ul>
-                        </div>
-                </section>
-               <section id="contact">
-                    <h2>Customer information</h2>
-                        <p>This is where you provide neccesary information</p>
-                        <h3>Delivery information:</h3>
-                            <form>
-                                <p>
-                                    <label for="name"> Full name</label><br>
-                                    <input type="text" id="name" name="n" required="required" placeholder="First- and last name">
-                                </p>
-                                <p>
-                                    <label for="email">E-mail</label><br>
-                                    <input type="email" id="email" name="em" required="required" placeholder="E-mail">
-                                </p>
-                                <p>
-                                    <label for="street">Street</label><br>
-                                    <input type="text" id="street" name="str" required="required" placeholder="Street name">
-                                </p>
-                                <p>
-                                    <label for="house">House</label><br>
-                                    <input type=”number” id="house" name="hnr" required="required" placeholder="House number">
-                                </p>
-                                <p>
-                                    <label for="payment">Payment</label><br>
-                                    <select id="payment" name="pay">
-                                        <option>Credit Card</option>
-                                        <option selected>Debit Card</option>
-                                        <option>Swish</option>
-                                        <option>Cash</option>
-                                    </select>
-                                </p>
-                                <p>
-                                    <label>Gender</label><br/>
 
-                                    <input type="radio" name="gender" id="Female"/> 
-                                    <label for ="Female"> Female </label> <br/>
+<head>
+    <title> Bob's Burgers</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/style.css">
 
-                                    <input type="radio" name="gender" id="Male"/> 
-                                    <label for ="Male"> Male </label> <br/>
+    <script type="text/javascript" src="js/menu.js"></script>
+    <script src="js/js_script.js" defer></script>
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="js/vue_script.js" defer></script>
+</head>
 
-                                    <input type="radio" name="gender" id="NonBinary"/> 
-                                    <label for ="NonBinary"> Non-Binary </label> <br/>
+<body>
+    <header>
+        <img src="https://www.visitcalgary.com/sites/default/files/2019-08/Best_Burgers_Image_Header_2019.jpg">
+        <h1>Welcome to Bob's Burgers!</h1>
+    </header>
+    <main>
+        <section id="menu">
+            <h2>Select burger</h2>
+            <p>Select your burger</p>
+            <!-- OLD MENU-CODE
+                <div class="burger a">
+                    <h3>The Bob Burger</h3>
+                    <img src="https://www.burgerking.se/011_se/Product%20images/Burgers/image-thumb__18082__modMenuProductTile/BBQ%20CHEESE%20BACON_1500x1500px~-~1024w@2x.png" 
+                        alt="span" title="The Bob Burger" width="150px"> 
+                    <ul>
+                        <li>Our most popular burger!</li>
+                        <li>1000 kCal</li>
+                        <li>Contains <span class="allergy">lactose</span></li>
+                        <li>Contains <span class="allergy">gluten</span></li>
+                    </ul>
+                </div>
+                <div class="burger b">
+                    <h3>Chicken burger</h3>
+                    <img src="https://www.burgerking.se/011_se/Product%20images/Burgers/image-thumb__14591__modMenuProductTile/Chicken%20King%201500x1500~-~1024w@2x.png" 
+                            alt="span" title="Chicken burger" width="150px"> 
+                    <ul>
+                        <li>Our spicy chicken burger!</li>
+                        <li>800 kCal</li>
+                        <li>Contains <span class="allergy">gluten</span></li>
+                        <li>Contains <span class="allergy">nuts</span></li>
+                    </ul>
+                </div>
+                <div class="burger c">
+                    <h3>Halloumi burger</h3>
+                    <img src="https://www.burgerking.se/011_se/Product%20images/KAMPANJ/image-thumb__21855__modMenuProductTile/SMOKEY%20HALLOUMI%201500x1500~-~1024w@2x.png" 
+                        alt="span" title="Halloumi burger" width="150px">
+                    <ul>
+                        <li>Vegetarian option!</li>
+                        <li>850 kCal</li>
+                        <li>Contains <span class="allergy">lactose</span></li>
+                        <li>Contains <span class="allergy">gluten</span></li>
+                    </ul>
+                </div> 
+            -->
+        </section>
 
-                                    <input type="radio" name="gender" id="notProvided"  checked="checked"/> 
-                                    <label  for ="notProvided"> Do not wish to provide </label> <br/>
-                                </p>
-                            </form>
-               </section>
-               <button type="submit"><img width= "20px" src="https://cdn.iconscout.com/icon/premium/png-64-thumb/shopping-cart-411-1092382.png"> Place order!</button>
 
-        </main>
-        <footer>
-            <hr>
-            <p> &copy; 2020 Bob's Burgers Inc.</p>
-        </footer>
-    </body>
+        <section id="contact">
+            <h2>Customer information</h2>
+            <p>Provide neccesary delivery information</p>
+            <h3>Delivery information:</h3>
+            <form>
+                <p>
+                    <label for="name"> Full name</label><br>
+                    <input type="text" id="name" name="n" required="required" placeholder="First- and last name">
+                </p>
+                <p>
+                    <label for="email">E-mail</label><br>
+                    <input type="email" id="email" name="em" required="required" placeholder="E-mail">
+                </p>
+                <p>
+                    <label for="street">Street</label><br>
+                    <input type="text" id="street" name="str" required="required" placeholder="Street name">
+                </p>
+                <p>
+                    <label for="house">House</label><br>
+                    <input type=”number” id="house" name="hnr" required="required" placeholder="House number">
+                </p>
+                <p>
+                    <label for="payment">Payment</label><br>
+                    <select id="payment" name="pay">
+                        <option>Credit Card</option>
+                        <option selected>Debit Card</option>
+                        <option>Swish</option>
+                        <option>Cash</option>
+                    </select>
+                </p>
+                <p>
+                    <label>Gender</label><br />
+
+                    <input type="radio" name="gender" id="female" />
+                    <label for="female"> Female </label> <br />
+
+                    <input type="radio" name="gender" id="male" />
+                    <label for="male"> Male </label> <br />
+
+                    <input type="radio" name="gender" id="nonBinary" />
+                    <label for="nonBinary"> Non-Binary </label> <br />
+
+                    <input type="radio" name="gender" id="notProvided" checked="checked" />
+                    <label for="notProvided"> Do not wish to provide </label> <br />
+                </p>
+            </form>
+        </section>
+        <button type="submit"><img width="20px"
+                src="https://cdn.iconscout.com/icon/premium/png-64-thumb/shopping-cart-411-1092382.png"> Place
+            order!</button>
+    </main>
+    <footer>
+        <hr>
+        <p> &copy; 2020 Bob's Burgers Inc.</p>
+    </footer>
+</body>
+
 </html>
