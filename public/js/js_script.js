@@ -76,7 +76,7 @@ function getInfo(){
     let houseNr = document.getElementById("house").value;
     let payment = document.getElementById("payment").value;
 
-    //Hittar vilken radio button som är vald
+    //Hittar vilken radio button för gender som är vald
     let gender = "";
     let radio = document.getElementsByName('gender');    
     console.log(radio);
