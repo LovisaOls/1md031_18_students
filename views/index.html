@@ -21,6 +21,20 @@
         <section id="menu">
             <h2>Select burger</h2>
             <p>Select your burger</p>
+            <!-- VUE-CODE
+                <div class="burger" v-for="burger in MyBurgers">
+                    <h3>{{burger.name}}</h3>
+                    
+                    <img v-bind:src=burger.img width="75%">
+                    <ul>
+                        <li>{{burger.kCal}} kCal</li>
+                        <li v-if=burger.gluten> Contains Gluten</li>
+                        <li v-if=burger.lactose> Contains Lactose</li>
+                    </ul>
+
+                    <input type="checkbox"/>
+                </div> 
+            -->
             <!-- OLD MENU-CODE
                 <div class="burger a">
                     <h3>The Bob Burger</h3>

@@ -52,6 +52,7 @@ function CreateMenu(allBurgers){
         //Lägger till en checkbox
         let checkbox = document.createElement('input');
         checkbox.type = "checkbox";
+        checkbox.setAttribute("class", "burgerBox")
 
         mItem.appendChild(checkbox);
 
@@ -65,10 +66,6 @@ var orderButton = document.querySelector('button');
 // In JavaScript you can either trigger an event directly on an object
 orderButton.onclick = getInfo;
 
-function buttonClicked(){
-    console.log("Button Clicked");
-};
-
 function getInfo(){
     let customerName = document.getElementById("name").value;
     let email = document.getElementById("email").value;
@@ -79,14 +76,76 @@ function getInfo(){
     //Hittar vilken radio button för gender som är vald
     let gender = "";
     let radio = document.getElementsByName('gender');    
-    console.log(radio);
         for(i = 0; i < radio.length; i++) { 
             if(radio[i].checked){
                 gender = radio[i].id; 
             };     
         };
 
+    if (gender == "notProvided"){
+        gender = "Do not wish to provide"
+    }
+    if (gender == "nonBinary"){
+        gender = "Non-Binary"
+    }
+
+
+    //Skriver ut info på skärmen
+    let mainSite = document.querySelector("main");
+    let orderInfo = document.createElement("section");
+    orderInfo.setAttribute('id', "orderConfirmation");
+    mainSite.appendChild(orderInfo);
     
-    console.log(customerName +" "+ email +" "+ street +" "+ houseNr +" "+ payment +" "+ gender);
+    let title = document.createElement("h2");
+    let titleText = document.createTextNode("Your order has been placed!");
+    title.appendChild(titleText);
+    orderInfo.appendChild(title);
+
+    let customerInfo = document.createElement("div");
+    customerInfo.setAttribute("id", "CustomerInfo");
+
+    let subTitle = document.createElement("h3");
+    titleText = document.createTextNode("Customer details");
+    subTitle.appendChild(titleText);
+    customerInfo.appendChild(subTitle);
+
+    //Name 
+    let par = document.createElement("p");
+    let p_text = document.createTextNode("Name: " + customerName);
+    par.appendChild(p_text);
+    customerInfo.appendChild(par);
+
+    //Email
+    par = document.createElement("p");
+    p_text = document.createTextNode("Email: " + email);
+    par.appendChild(p_text);
+    customerInfo.appendChild(par);
+
+    //Address
+    par = document.createElement("p");
+    p_text = document.createTextNode("Delivery address: " + street + " " + houseNr);
+    par.appendChild(p_text);
+    customerInfo.appendChild(par);
+
+    //Payment
+    par = document.createElement("p");
+    p_text = document.createTextNode("Payment method: " + payment);
+    par.appendChild(p_text);
+    customerInfo.appendChild(par);
+    
+    //Gender
+    par = document.createElement("p");
+    p_text = document.createTextNode("Gender: " + gender);
+    par.appendChild(p_text);
+    customerInfo.appendChild(par);
+
+    orderInfo.appendChild(customerInfo);
+
+    let allBurgers = document.getElementsByClassName("burger");
+    for(i = 0; i < allBurgers.length; i++) { 
+        let burger = allBurgers[i];
+        console.dir(burger.children.burgerBox)
+  
+    };
 }
 
