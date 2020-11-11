@@ -43,3 +43,4 @@ var burgers = [
         "img": "https://www.burgerking.se/011_se/Product%20images/Veggie/image-thumb__7672__modMenuProductTile/FISH%20KING%201500x1500~-~1024w@2x.png"
     }
 ]
+

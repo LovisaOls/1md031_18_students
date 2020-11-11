@@ -5,3 +5,13 @@ data:{
 }
 })
 
+var vbutton = new Vue({
+    el: "#orders",
+    methods: {
+        getInfoVue: function(){
+            getInfo()
+        }
+    }
+})
+ 
+

@@ -120,9 +120,14 @@
                 </p>
             </form>
         </section>
-        <button type="submit"><img width="20px"
-                src="https://cdn.iconscout.com/icon/premium/png-64-thumb/shopping-cart-411-1092382.png"> Place
-            order!</button>
+
+        <div id= "orders">
+            <button v-on:click="getInfoVue(key)" type="submit"><img width="20px"
+                    src="https://cdn.iconscout.com/icon/premium/png-64-thumb/shopping-cart-411-1092382.png"> Place
+                    order!
+            </button>
+        </div>
+    
     </main>
     <footer>
         <hr>

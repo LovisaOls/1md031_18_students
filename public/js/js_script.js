@@ -1,5 +1,9 @@
 
 CreateMenu(burgers);
+var orderButton = document.querySelector('button');
+orderButton.onclick = getInfo;
+
+
 
 function CreateMenu(allBurgers){
     let menu = document.getElementById("menu");
@@ -52,19 +56,12 @@ function CreateMenu(allBurgers){
         //Lägger till en checkbox
         let checkbox = document.createElement('input');
         checkbox.type = "checkbox";
-        checkbox.setAttribute("class", "burgerBox")
-
+        checkbox.setAttribute("id", allBurgers[index].name)
         mItem.appendChild(checkbox);
-
         menu.appendChild(mItem);
     };
   
 };
-
-var orderButton = document.querySelector('button');
-
-// In JavaScript you can either trigger an event directly on an object
-orderButton.onclick = getInfo;
 
 function getInfo(){
     let customerName = document.getElementById("name").value;
@@ -141,11 +138,35 @@ function getInfo(){
 
     orderInfo.appendChild(customerInfo);
 
-    let allBurgers = document.getElementsByClassName("burger");
-    for(i = 0; i < allBurgers.length; i++) { 
-        let burger = allBurgers[i];
-        console.dir(burger.children.burgerBox)
-  
+
+    // Find selected burgers
+    let orderedBurgers = [];
+    for(i = 0; i < burgers.length; i++) { 
+        if(document.getElementById(burgers[i].name).checked){
+            orderedBurgers.push(burgers[i].name)
+        }
     };
-}
+
+    //Print selected burgers
+    let orderSum = document.createElement("div");
+    orderSum.setAttribute("id", "orderSummary");
+
+    subTitle = document.createElement("h3");
+    titleText = document.createTextNode("Order Summary");
+    subTitle.appendChild(titleText);
+    orderSum.appendChild(subTitle);
+
+    orderInfo.appendChild(orderSum);
+
+    let orderList = document.createElement("ul");
+    orderSum.appendChild(orderList);
+
+    for(i = 0; i < orderedBurgers.length; i++) { 
+        listItem = document.createElement("li");
+        listValue = document.createTextNode(orderedBurgers[i]);
+        listItem.appendChild(listValue);
+        orderList.appendChild(listItem);
+    }
+
+};
 
