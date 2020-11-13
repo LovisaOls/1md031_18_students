@@ -1,14 +1,13 @@
 
-CreateMenu(burgers);
-var orderButton = document.querySelector('button');
-orderButton.onclick = getInfo;
+//CreateMenu(burgers);
+//var orderButton = document.querySelector('button');
+//orderButton.onclick = getInfo;
 
-
-
-function CreateMenu(allBurgers){
+function CreateMenu(allBurgers) {
+    console.log(allBurgers);
     let menu = document.getElementById("menu");
 
-    for (let index = 0; index < allBurgers.length; index ++){
+    for (let index = 0; index < allBurgers.length; index++) {
 
         //Skapar en div för burgaren med klassen "burger"
         let mItem = document.createElement("div");
@@ -22,7 +21,7 @@ function CreateMenu(allBurgers){
 
         //Lägger till Burgarens bild 
         let itemImage = document.createElement("img");
-        itemImage.setAttribute("src",allBurgers[index].img);
+        itemImage.setAttribute("src", allBurgers[index].img);
         itemImage.setAttribute("width", "75%")
         mItem.appendChild(itemImage);
 
@@ -31,10 +30,10 @@ function CreateMenu(allBurgers){
 
         //Info om kalorier
         listItem = document.createElement("li");
-        listValue = document.createTextNode(allBurgers[index].kCal +' '+ 'kCal');
+        listValue = document.createTextNode(allBurgers[index].kCal + ' ' + 'kCal');
         listItem.appendChild(listValue);
         burgerInfo.appendChild(listItem);
-        
+
         //Info om Gluten
         if (allBurgers[index].gluten) {
             listItem = document.createElement("li");
@@ -42,7 +41,7 @@ function CreateMenu(allBurgers){
             listItem.appendChild(listValue);
             burgerInfo.appendChild(listItem);
         };
-        
+
         //Info om laktos
         if (allBurgers[index].lactose) {
             listItem = document.createElement("li");
@@ -54,45 +53,47 @@ function CreateMenu(allBurgers){
         mItem.appendChild(burgerInfo);
 
         //Lägger till en checkbox
+        let par = document.createElement("p");
+        mItem.appendChild(par);
+        let parText = document.createTextNode("Add to order ");
+        par.appendChild(parText);
+
         let checkbox = document.createElement('input');
         checkbox.type = "checkbox";
         checkbox.setAttribute("id", allBurgers[index].name)
-        mItem.appendChild(checkbox);
+        par.appendChild(checkbox);
+
         menu.appendChild(mItem);
     };
-  
+
 };
 
 function getInfo(){
     let customerName = document.getElementById("name").value;
     let email = document.getElementById("email").value;
-    let street = document.getElementById("street").value;
-    let houseNr = document.getElementById("house").value;
     let payment = document.getElementById("payment").value;
 
     //Hittar vilken radio button för gender som är vald
     let gender = "";
-    let radio = document.getElementsByName('gender');    
-        for(i = 0; i < radio.length; i++) { 
-            if(radio[i].checked){
-                gender = radio[i].id; 
-            };     
+    let radio = document.getElementsByName('gender');
+    for (i = 0; i < radio.length; i++) {
+        if (radio[i].checked) {
+            gender = radio[i].id;
         };
-
-    if (gender == "notProvided"){
+    };
+    if (gender == "notProvided") {
         gender = "Do not wish to provide"
     }
-    if (gender == "nonBinary"){
+    if (gender == "nonBinary") {
         gender = "Non-Binary"
     }
 
-
     //Skriver ut info på skärmen
-    let mainSite = document.querySelector("main");
+    let mainSite = document.getElementById("main");
     let orderInfo = document.createElement("section");
     orderInfo.setAttribute('id', "orderConfirmation");
     mainSite.appendChild(orderInfo);
-    
+
     let title = document.createElement("h2");
     let titleText = document.createTextNode("Your order has been placed!");
     title.appendChild(titleText);
@@ -118,18 +119,12 @@ function getInfo(){
     par.appendChild(p_text);
     customerInfo.appendChild(par);
 
-    //Address
-    par = document.createElement("p");
-    p_text = document.createTextNode("Delivery address: " + street + " " + houseNr);
-    par.appendChild(p_text);
-    customerInfo.appendChild(par);
-
     //Payment
     par = document.createElement("p");
     p_text = document.createTextNode("Payment method: " + payment);
     par.appendChild(p_text);
     customerInfo.appendChild(par);
-    
+
     //Gender
     par = document.createElement("p");
     p_text = document.createTextNode("Gender: " + gender);
@@ -141,8 +136,8 @@ function getInfo(){
 
     // Find selected burgers
     let orderedBurgers = [];
-    for(i = 0; i < burgers.length; i++) { 
-        if(document.getElementById(burgers[i].name).checked){
+    for (i = 0; i < burgers.length; i++) {
+        if (document.getElementById(burgers[i].name).checked) {
             orderedBurgers.push(burgers[i].name)
         }
     };
@@ -161,7 +156,7 @@ function getInfo(){
     let orderList = document.createElement("ul");
     orderSum.appendChild(orderList);
 
-    for(i = 0; i < orderedBurgers.length; i++) { 
+    for (i = 0; i < orderedBurgers.length; i++) {
         listItem = document.createElement("li");
         listValue = document.createTextNode(orderedBurgers[i]);
         listItem.appendChild(listValue);

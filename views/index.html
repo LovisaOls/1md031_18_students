@@ -4,12 +4,16 @@
 <head>
     <title> Bob's Burgers</title>
     <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/deli-very.css">
 
+    <script src="/socket.io/socket.io.js" defer></script>
     <script type="text/javascript" src="js/menu.js"></script>
     <script src="js/js_script.js" defer></script>
-    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="/vue/vue.js" defer></script>
     <script src="js/vue_script.js" defer></script>
+
 </head>
 
 <body>
@@ -17,24 +21,24 @@
         <img src="https://www.visitcalgary.com/sites/default/files/2019-08/Best_Burgers_Image_Header_2019.jpg">
         <h1>Welcome to Bob's Burgers!</h1>
     </header>
-    <main>
+    <main id="main"> 
         <section id="menu">
             <h2>Select burger</h2>
             <p>Select your burger</p>
-            <!-- VUE-CODE
-                <div class="burger" v-for="burger in MyBurgers">
-                    <h3>{{burger.name}}</h3>
-                    
-                    <img v-bind:src=burger.img width="75%">
-                    <ul>
-                        <li>{{burger.kCal}} kCal</li>
-                        <li v-if=burger.gluten> Contains Gluten</li>
-                        <li v-if=burger.lactose> Contains Lactose</li>
-                    </ul>
 
-                    <input type="checkbox"/>
-                </div> 
-            -->
+            <div class="burger" v-for="burger in MyBurgers">
+                <h3>{{burger.name}}</h3>
+
+                <img v-bind:src=burger.img width="75%">
+                <ul>
+                    <li>{{burger.kCal}} kCal</li>
+                    <li v-if=burger.gluten> Contains Gluten</li>
+                    <li v-if=burger.lactose> Contains Lactose</li>
+                </ul>
+
+
+                <p>Add to order <input type="checkbox" :id="burger.name"/></p>
+            </div>
             <!-- OLD MENU-CODE
                 <div class="burger a">
                     <h3>The Bob Burger</h3>
@@ -87,14 +91,6 @@
                     <input type="email" id="email" name="em" required="required" placeholder="E-mail">
                 </p>
                 <p>
-                    <label for="street">Street</label><br>
-                    <input type="text" id="street" name="str" required="required" placeholder="Street name">
-                </p>
-                <p>
-                    <label for="house">House</label><br>
-                    <input type=”number” id="house" name="hnr" required="required" placeholder="House number">
-                </p>
-                <p>
                     <label for="payment">Payment</label><br>
                     <select id="payment" name="pay">
                         <option>Credit Card</option>
@@ -119,15 +115,25 @@
                     <label for="notProvided"> Do not wish to provide </label> <br />
                 </p>
             </form>
+
+            <div class="view-box">
+                <div id="dots" v-on:click="addOrder">
+                    <div v-for="(order, key) in orders"
+                        v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+                        {{key}}
+                    </div>
+                </div>
+            </div>
+    
         </section>
 
-        <div id= "orders">
+       
+        <div id="orders">
             <button v-on:click="getInfoVue(key)" type="submit"><img width="20px"
                     src="https://cdn.iconscout.com/icon/premium/png-64-thumb/shopping-cart-411-1092382.png"> Place
-                    order!
+                order!
             </button>
         </div>
-    
     </main>
     <footer>
         <hr>

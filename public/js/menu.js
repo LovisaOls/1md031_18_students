@@ -41,6 +41,28 @@ var burgers = [
         "lactose": true,
         "gluten": false,
         "img": "https://www.burgerking.se/011_se/Product%20images/Veggie/image-thumb__7672__modMenuProductTile/FISH%20KING%201500x1500~-~1024w@2x.png"
+    },
+    {
+        "name":"Sweet Potato Fries", 
+        "kCal": 500,
+        "lactose": false,
+        "gluten": false,
+        "img": "https://www.burgerking.se/011_se/promotions/2020%20LTO1/LTO2/image-thumb__19540__modMenuProductTile/Sweet%20Potato%20Fries~-~1440w@2x.png"
+    },
+    {
+        "name":"Onion Rings", 
+        "kCal": 450,
+        "lactose": false,
+        "gluten": true,
+        "img": "https://www.burgerking.se/011_se/Product%20images/Snacks/image-thumb__7680__modMenuProductTile/ONION%20RINGS%201500x1500~-~1440w@2x.png"
+    },
+    {
+        "name":"Chili Cheese", 
+        "kCal": 550,
+        "lactose": true,
+        "gluten": true,
+        "img": "https://www.burgerking.se/011_se/Product%20images/Snacks/image-thumb__7678__modMenuProductTile/CHILI%20CHEESE%20NUGGETS%201500x1500~-~1440w@2x.png"
     }
+ 
 ]
 
