@@ -117,10 +117,9 @@
             </form>
 
             <div class="view-box">
-                <div id="dots" v-on:click="addOrder">
-                    <div v-for="(order, key) in orders"
-                        v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
-                        {{key}}
+                <div id="dots" v-on:click="displayOrder">
+                    <div v-bind:style="{left: coordinates.x + 'px', top: coordinates.y + 'px'}">
+                        T
                     </div>
                 </div>
             </div>
@@ -129,7 +128,7 @@
 
        
         <div id="orders">
-            <button v-on:click="getInfoVue(key)" type="submit"><img width="20px"
+            <button v-on:click="addOrder" type="submit"><img width="20px"
                     src="https://cdn.iconscout.com/icon/premium/png-64-thumb/shopping-cart-411-1092382.png"> Place
                 order!
             </button>

@@ -3,6 +3,7 @@
 //var orderButton = document.querySelector('button');
 //orderButton.onclick = getInfo;
 
+
 function CreateMenu(allBurgers) {
     console.log(allBurgers);
     let menu = document.getElementById("menu");
@@ -69,24 +70,7 @@ function CreateMenu(allBurgers) {
 };
 
 function getInfo(){
-    let customerName = document.getElementById("name").value;
-    let email = document.getElementById("email").value;
-    let payment = document.getElementById("payment").value;
-
-    //Hittar vilken radio button för gender som är vald
-    let gender = "";
-    let radio = document.getElementsByName('gender');
-    for (i = 0; i < radio.length; i++) {
-        if (radio[i].checked) {
-            gender = radio[i].id;
-        };
-    };
-    if (gender == "notProvided") {
-        gender = "Do not wish to provide"
-    }
-    if (gender == "nonBinary") {
-        gender = "Non-Binary"
-    }
+    let personalInformation = getPersonalInfo();
 
     //Skriver ut info på skärmen
     let mainSite = document.getElementById("main");
@@ -109,38 +93,32 @@ function getInfo(){
 
     //Name 
     let par = document.createElement("p");
-    let p_text = document.createTextNode("Name: " + customerName);
+    let p_text = document.createTextNode("Name: " + personalInformation[0]);
     par.appendChild(p_text);
     customerInfo.appendChild(par);
 
     //Email
     par = document.createElement("p");
-    p_text = document.createTextNode("Email: " + email);
+    p_text = document.createTextNode("Email: " + personalInformation[1]);
     par.appendChild(p_text);
     customerInfo.appendChild(par);
 
     //Payment
     par = document.createElement("p");
-    p_text = document.createTextNode("Payment method: " + payment);
+    p_text = document.createTextNode("Payment method: " + personalInformation[2]);
     par.appendChild(p_text);
     customerInfo.appendChild(par);
 
     //Gender
     par = document.createElement("p");
-    p_text = document.createTextNode("Gender: " + gender);
+    p_text = document.createTextNode("Gender: " + personalInformation[3]);
     par.appendChild(p_text);
     customerInfo.appendChild(par);
 
     orderInfo.appendChild(customerInfo);
 
-
-    // Find selected burgers
-    let orderedBurgers = [];
-    for (i = 0; i < burgers.length; i++) {
-        if (document.getElementById(burgers[i].name).checked) {
-            orderedBurgers.push(burgers[i].name)
-        }
-    };
+    //Find selected burgers
+    let orderedBurgers = findBurgers();
 
     //Print selected burgers
     let orderSum = document.createElement("div");
@@ -165,3 +143,41 @@ function getInfo(){
 
 };
 
+function findBurgers(){
+    // Find selected burgers
+    let orderedBurgers = [];
+    for (i = 0; i < burgers.length; i++) {
+        if (document.getElementById(burgers[i].name).checked) {
+            orderedBurgers.push(burgers[i].name)
+        }
+    };
+
+    return orderedBurgers;
+};
+
+function getPersonalInfo(){
+
+    let customerName; 
+    let email;
+    let payment;
+    let gender = ""; 
+    
+    customerName = document.getElementById("name").value;
+    email = document.getElementById("email").value;
+    payment = document.getElementById("payment").value;
+
+    //Hittar vilken radio button för gender som är vald
+    let radio = document.getElementsByName('gender');
+    for (i = 0; i < radio.length; i++) {
+        if (radio[i].checked) {
+            gender = radio[i].id;
+        };
+    };
+    if (gender == "notProvided") {
+        gender = "Do not wish to provide"
+    }
+    if (gender == "nonBinary") {
+        gender = "Non-Binary"
+    }
+    return [customerName, email, payment, gender]
+};

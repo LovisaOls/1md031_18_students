@@ -40,7 +40,11 @@ function Data() {
   Adds an order to to the queue
 */
 Data.prototype.addOrder = function (order) {
+  var lastOrder = Object.keys(this.orders).reduce(function (last, next) {
+    return Math.max(last, next);
+  }, 0);
   //Store the order in an "associative array" with orderId as key
+  order.orderId = lastOrder + 1;
   this.orders[order.orderId] = order;
 };
 
